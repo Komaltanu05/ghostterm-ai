@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --crt-glow: rgba(51, 255, 51, 0.65);
+    --crt-bg: #030a03;
+    --crt-text: #33ff33;
+    --crt-dim: #1a881a;
+  }
+
+  body {
+    background-color: #030803;
+    color: #33ff33;
+    font-family: 'Fira Code', 'Courier New', monospace;
+  }
+}
+
+/* CRT Scanlines Overlay */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.35) 50%
+  ), 
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* CRT Vignette / Screen curvature shadow */
+.crt-vignette {
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85), inset 0 0 40px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+}
+
+/* Phosphor Glow */
+.glow-text-green {
+  text-shadow: 0 0 4px rgba(51, 255, 51, 0.8), 0 0 10px rgba(51, 255, 51, 0.4);
+}
+
+.glow-box-green {
+  box-shadow: 0 0 15px rgba(51, 255, 51, 0.3), inset 0 0 15px rgba(51, 255, 51, 0.1);
+}
+
+.glow-text-amber {
+  text-shadow: 0 0 4px rgba(255, 176, 0, 0.8), 0 0 10px rgba(255, 176, 0, 0.4);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.8), 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+/* CRT Screen Flicker */
+@keyframes crt-flicker {
+  0% { opacity: 0.99; }
+  50% { opacity: 1; }
+  52% { opacity: 0.96; }
+  54% { opacity: 1; }
+  80% { opacity: 0.98; }
+  100% { opacity: 1; }
+}
+
+.animate-crt-flicker {
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* Spectral Glitch pulse */
+@keyframes ghost-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(51, 255, 51, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(100, 255, 150, 1)) drop-shadow(0 0 25px rgba(0, 255, 100, 0.6));
+  }
+}
+
+.animate-ghost-pulse {
+  animation: ghost-pulse 2.5s ease-in-out infinite;
+}
+
+/* Blinking Cursor */
+@keyframes blink-cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+/* Custom retro scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #051005;
+  border-left: 1px solid #143514;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f641f;
+  border: 1px solid #33ff33;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #33ff33;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "GhostTerm AI",
+  "description": "A spooky retro CRT computer terminal possessed by a friendly, mysterious open-weight AI ghost for Hacktoberfest Week 4.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
